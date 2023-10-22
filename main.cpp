@@ -60,7 +60,7 @@ int main(void)
                 string s;
                 getline(cin, s); // холостой вызов
                 getline(cin, poetPros);
-                
+
                 pos = "Poet";
 
                 Keeper human(pos, name, surname, lastname, years, poetPros, "", "", "", "");
@@ -88,10 +88,12 @@ int main(void)
                     while (getline(fs, line))
                     {
                         count += 1;
-                        if (count != numberDelete) {
+                        if (count != numberDelete)
+                        {
                             change << line << endl;
                         }
-                        else {
+                        else
+                        {
                             returnStr = line;
                         }
                     }
@@ -171,7 +173,7 @@ int main(void)
                 getline(cin, romanPros);
                 cout << "Введите краткую биографию" << endl;
                 getline(cin, romanBio);
-                
+
                 pos = "Romanist";
 
                 Keeper human(pos, name, surname, lastname, years, "", romanPros, romanBio, "", "");
@@ -199,10 +201,12 @@ int main(void)
                     while (getline(fs, line))
                     {
                         count += 1;
-                        if (count != numberDelete) {
+                        if (count != numberDelete)
+                        {
                             change << line << endl;
                         }
-                        else {
+                        else
+                        {
                             returnStr = line;
                         }
                     }
@@ -280,7 +284,7 @@ int main(void)
                 getline(cin, fantPros);
                 cout << "Сняты ли фильмы по книгам (Да/Нет)" << endl;
                 getline(cin, fantFilms);
-                
+
                 pos = "Fantast";
 
                 Keeper human(pos, name, surname, lastname, "", "", "", "", fantPros, fantFilms);
@@ -308,10 +312,12 @@ int main(void)
                     while (getline(fs, line))
                     {
                         count += 1;
-                        if (count != numberDelete) {
+                        if (count != numberDelete)
+                        {
                             change << line << endl;
                         }
-                        else {
+                        else
+                        {
                             returnStr = line;
                         }
                     }
@@ -364,7 +370,7 @@ int main(void)
             {
                 break;
             }
-        } 
+        }
 
         if (x == 4)
         {

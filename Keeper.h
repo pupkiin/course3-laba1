@@ -18,7 +18,7 @@ private:
 
 public:
     Keeper(string pos, string name, string surname, string lastname, string years,
-     string poetPros, string romanPros, string romanBio, string fantPros, string fantFilms)
+           string poetPros, string romanPros, string romanBio, string fantPros, string fantFilms)
     {
         _pos = pos;
         _name = name;
@@ -52,27 +52,33 @@ public:
         this->_lastname = lastname;
     }
 
-    void setYears(string years) {
+    void setYears(string years)
+    {
         this->_years = years;
     }
 
-    void setPoetPros(string poetPros) {
+    void setPoetPros(string poetPros)
+    {
         this->_poetPros = poetPros;
     }
 
-    void setRomanPros(string romanPros) {
+    void setRomanPros(string romanPros)
+    {
         this->_romanPros = romanPros;
     }
 
-    void setRomanBio(string romanBio) {
+    void setRomanBio(string romanBio)
+    {
         this->_romanBio = romanBio;
     }
 
-    void setFantPros(string fantPros) {
+    void setFantPros(string fantPros)
+    {
         this->_fantPros = fantPros;
     }
 
-    void setFantFilms(string fantFilms) {
+    void setFantFilms(string fantFilms)
+    {
         this->_fantFilms = fantFilms;
     }
 
@@ -96,27 +102,33 @@ public:
         return _lastname;
     }
 
-    string getYears() {
+    string getYears()
+    {
         return _years;
     }
 
-    string getPoetPros() {
+    string getPoetPros()
+    {
         return _poetPros;
     }
 
-    string getRomanPros() {
+    string getRomanPros()
+    {
         return _romanPros;
     }
 
-    string getRomanBio() {
+    string getRomanBio()
+    {
         return _romanBio;
     }
 
-    string getFantPros() {
+    string getFantPros()
+    {
         return _fantPros;
     }
 
-    string getFantFilms() {
+    string getFantFilms()
+    {
         return _fantFilms;
     }
 };
