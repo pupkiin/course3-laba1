@@ -3,7 +3,6 @@
 //  ./main
 #include <fstream>
 #include <vector>
-#include <string>
 // Класс Печатное издание хранит книги поэтов, романистов и фантастов. Для
 // поэтом определено: ФИО, годы жизни, несколько основных произведений. Для
 // романистов определено: ФИО, годы жизни, несколько произведений, краткая
@@ -28,13 +27,15 @@ int main(void)
     int x = 0;
     int k = 0;
 
+    Keeper tom("Tom", "pidor", "ebaniy");
+    cout << tom.getSurname() << endl;
+
     while (true)
     {
         showMenu1();
         cout << "----------------" << endl;
         cout << "Кого выбираем?" << endl;
         cin >> x;
-        cout << "----------------" << endl;
 
         if (x == 1) // поэты
         {
@@ -42,7 +43,6 @@ int main(void)
             cout << "----------------" << endl;
             cout << "Что делаем?" << endl;
             cin >> k;
-            cout << "----------------" << endl;
 
             if (k == 1)
             { // добавляем
@@ -55,82 +55,28 @@ int main(void)
                 cin >> lastname;
                 pos = "Поэт";
 
-                Keeper human("Poet", name, surname, lastname, "");
+                Keeper human(name, surname, lastname);
                 fstream fs;
                 fs.open("text.txt", ios::app);
 
-                fs << human.getPos() + ' ' + human.getName() + ' ' + human.getSurname() + ' ' + human.getLastname() << endl;
+                fs << human.getName() + ' ' + human.getSurname() + ' ' + human.getLastname() << endl;
                 fs.close();
             }
 
-            if (k == 2)
-            { // удаление
-                fstream fs;
-                fs.open("text.txt", ios::in);
-                string line;
-                int count = 0;
-                if (fs.is_open())
-                {
-                    while (getline(fs, line))
-                    {
-                        count += 1;
-                    }
-                }
-                fs.close();
-                cout << count << endl;
+            if (k == 2) {
+
             }
 
-            if (k == 3)
-            { // вывод
-                fstream fs;
-                fs.open("text.txt", ios::in);
-                string line;
-                int count = 0;
-                if (fs.is_open())
-                {
-                    while (getline(fs, line))
-                    {
-                        count += 1;
-                        string softStr;
-                        for (int i = 0; i < 4; i++)
-                        {
-                            softStr += line[i];
-                        }
-                        if (softStr == "Poet")
-                        {
-                            cout << line << endl;
-                        }
-                        softStr = "";
-                    }
-                }
-                fs.close();
+            if (k == 3) {
+                
             }
 
-            if (k == 0)
-            {
+            if (k == 0) {
                 break;
             }
         }
 
-        if (x == 4)
-        {
-            cout << "Полный список авторов" << endl
-                 << endl;
-            fstream fs;
-            fs.open("text.txt", ios::in);
-            string line;
-            if (fs.is_open())
-            {
-                while (getline(fs, line))
-                {
-                    cout << line << endl;
-                }
-            }
-            fs.close();
-        }
-
-        if (x == 0)
-        {
+        if (x == 0) {
             break;
         }
     }
@@ -142,8 +88,7 @@ void showMenu1()
     cout << "1 - Поэт" << endl;
     cout << "2 - Романист" << endl;
     cout << "3 - Фантаст" << endl;
-    cout << "4 - Вывести список" << endl;
-    cout << "0 - Выход" << endl;
+    cout << "4 - Выход" << endl;
     cout << "----------------" << endl;
 }
 
