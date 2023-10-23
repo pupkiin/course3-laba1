@@ -32,6 +32,8 @@ public:
         _fantFilms = fantFilms;
     }
 
+    ~Keeper() {}
+
     void setPos(string pos)
     {
         this->_pos = pos;

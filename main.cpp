@@ -12,9 +12,6 @@
 
 using namespace std;
 
-// создавать обьекты, записывать их в файл,
-// при чтении из файла создавать обьект снова по заданным параметрам
-
 #include "Keeper.h"
 
 void showMenu1();
@@ -134,7 +131,26 @@ int main(void)
                         }
                         if (softStr == "Poet")
                         {
-                            cout << count << ' ' << line << endl;
+                            int spaceCount = 0;
+                            int symbolCount = 0;
+                            for (int j = 0; j < line.length(); j++) {
+                                if (line[j] == ' ' && spaceCount == 4) {
+                                    cout << count << " ";
+                                    for (int s = 0; s < j; s++) {
+                                        cout << line[s];
+                                    }
+                                    cout << endl;
+                                    for (int s = j; s < line.length(); s++) {
+                                        cout << line[s];
+                                    }
+                                    cout << endl << endl;
+                                    spaceCount += 1;
+                                } else {
+                                    if (line[j] == ' ') {
+                                        spaceCount += 1;
+                                    }
+                                }
+                            }
                         }
                         softStr = "";
                     }
@@ -247,7 +263,26 @@ int main(void)
                         }
                         if (softStr == "Romanist")
                         {
-                            cout << count << ' ' << line << endl;
+                            int spaceCount = 0;
+                            int symbolCount = 0;
+                            for (int j = 0; j < line.length(); j++) {
+                                if (line[j] == ' ' && spaceCount == 4) {
+                                    cout << count << " ";
+                                    for (int s = 0; s < j; s++) {
+                                        cout << line[s];
+                                    }
+                                    cout << endl;
+                                    for (int s = j; s < line.length(); s++) {
+                                        cout << line[s];
+                                    }
+                                    cout << endl << endl;
+                                    spaceCount += 1;
+                                } else {
+                                    if (line[j] == ' ') {
+                                        spaceCount += 1;
+                                    }
+                                }
+                            }
                         }
                         softStr = "";
                     }
@@ -358,7 +393,26 @@ int main(void)
                         }
                         if (softStr == "Fantast")
                         {
-                            cout << count << ' ' << line << endl;
+                            int spaceCount = 0;
+                            int symbolCount = 0;
+                            for (int j = 0; j < line.length(); j++) {
+                                if (line[j] == ' ' && spaceCount == 3) {
+                                    cout << count << " ";
+                                    for (int s = 0; s < j; s++) {
+                                        cout << line[s];
+                                    }
+                                    cout << endl;
+                                    for (int s = j; s < line.length(); s++) {
+                                        cout << line[s];
+                                    }
+                                    cout << endl << endl;
+                                    spaceCount += 1;
+                                } else {
+                                    if (line[j] == ' ') {
+                                        spaceCount += 1;
+                                    }
+                                }
+                            }
                         }
                         softStr = "";
                     }
@@ -385,7 +439,26 @@ int main(void)
                 while (getline(fs, line))
                 {
                     count += 1;
-                    cout << count << ' ' << line << endl;
+                    int spaceCount = 0;
+                    int symbolCount = 0;
+                    for (int j = 0; j < line.length(); j++) {
+                        if (line[j] == ' ' && spaceCount == 3) {
+                            cout << count << " ";
+                            for (int s = 0; s < j; s++) {
+                                cout << line[s];
+                            }
+                            cout << endl;
+                            for (int s = j; s < line.length(); s++) {
+                                cout << line[s];
+                            }
+                            cout << endl << endl;
+                            spaceCount += 1;
+                        } else {
+                            if (line[j] == ' ') {
+                                spaceCount += 1;
+                            }
+                        }
+                    }
                 }
             }
             fs.close();
