@@ -1,136 +1,138 @@
 #include <iostream>
-
+#include <fstream>
+#include <string>
+#include <exception>
 using namespace std;
 
-class Keeper
-{
-private:
-    string _pos;
-    string _name;
-    string _surname;
-    string _lastname;
-    string _years;
-    string _poetPros;
-    string _romanPros;
-    string _romanBio;
-    string _fantPros;
-    string _fantFilms;
-
+template <class T>
+class Keeper {
+	T* ptr;
+	int size;
 public:
-    Keeper(string pos, string name, string surname, string lastname, string years,
-           string poetPros, string romanPros, string romanBio, string fantPros, string fantFilms)
-    {
-        _pos = pos;
-        _name = name;
-        _surname = surname;
-        _lastname = lastname;
-        _years = years;
-        _poetPros = poetPros;
-        _romanPros = romanPros;
-        _romanBio = romanBio;
-        _fantPros = fantPros;
-        _fantFilms = fantFilms;
-    }
-
-    ~Keeper() {}
-
-    void setPos(string pos)
-    {
-        this->_pos = pos;
-    }
-
-    void setName(string name)
-    {
-        this->_name = name;
-    }
-
-    void setSurname(string surname)
-    {
-        this->_surname = surname;
-    }
-
-    void setLastname(string lastname)
-    {
-        this->_lastname = lastname;
-    }
-
-    void setYears(string years)
-    {
-        this->_years = years;
-    }
-
-    void setPoetPros(string poetPros)
-    {
-        this->_poetPros = poetPros;
-    }
-
-    void setRomanPros(string romanPros)
-    {
-        this->_romanPros = romanPros;
-    }
-
-    void setRomanBio(string romanBio)
-    {
-        this->_romanBio = romanBio;
-    }
-
-    void setFantPros(string fantPros)
-    {
-        this->_fantPros = fantPros;
-    }
-
-    void setFantFilms(string fantFilms)
-    {
-        this->_fantFilms = fantFilms;
-    }
-
-    string getPos()
-    {
-        return _pos;
-    }
-
-    string getName()
-    {
-        return _name;
-    }
-
-    string getSurname()
-    {
-        return _surname;
-    }
-
-    string getLastname()
-    {
-        return _lastname;
-    }
-
-    string getYears()
-    {
-        return _years;
-    }
-
-    string getPoetPros()
-    {
-        return _poetPros;
-    }
-
-    string getRomanPros()
-    {
-        return _romanPros;
-    }
-
-    string getRomanBio()
-    {
-        return _romanBio;
-    }
-
-    string getFantPros()
-    {
-        return _fantPros;
-    }
-
-    string getFantFilms()
-    {
-        return _fantFilms;
-    }
+	Keeper();
+	~Keeper();
+	void push();
+	void pop(int);
+	void write(string);
+	void read(string);
+	void show();
+	void edit(int);
 };
+
+template<class T>
+Keeper<T>::Keeper() {
+	cout << "Вызов конструктора по умолчанию для класса Keeper" << endl << endl;
+	ptr = nullptr;
+	size = 0;
+}
+
+template<class T>
+Keeper<T>::~Keeper() {
+	cout << "Вызов деструктора для класса Keeper" << endl << endl;
+	delete[] ptr;
+}
+
+template<class T>
+void Keeper<T>::push() {
+	T* temp = new T[size + 1];
+	for (int i = 0; i < size; ++i) {
+		temp[i] = ptr[i];
+	}
+	delete[] ptr;
+	ptr = temp;
+	cin >> ptr[size];
+	++size;
+	cout << endl << endl << "Новый объект добавлен" << endl << endl;
+}
+
+template < class T>
+void Keeper<T>::pop(int num) {
+	try {
+		if (size == 0) {
+			exception error("Пусто");
+			throw error;
+		}
+		if (num < 0 || num >= size) {
+			exception bug("Неверный номер");
+			throw bug;
+		}
+		T* temp = new T[size - 1];
+		ptr[num] = ptr[size - 1];
+		for (int i = 0; i < size - 1; ++i) {
+			temp[i] = ptr[i];
+		}
+		delete[] ptr;
+		ptr = temp;
+		--size;
+		cout << endl << endl << "Объект добавлен" << endl << endl;
+	}
+	catch (exception& error) {
+		cout << error.what() << endl << endl;
+	}
+}
+
+template<class T>
+void Keeper<T>::show() {
+	setlocale(LC_ALL, "Russian");
+
+
+	if (size == 0) {
+		cout << "Пусто" << endl << endl;
+	}
+	else {
+		for (int i = 0; i < size; ++i) {
+			cout << ptr[i] << endl;
+		}
+	}
+}
+
+template<class T>
+void Keeper<T>::edit(int change) {
+	try {
+		if (size == 0) {
+			exception error("Пусто");
+			throw error;
+		}
+		if (change < 0 || change >= size) {
+			exception bug("Неверный номер");
+			throw bug;
+		}
+		cin >> ptr[change];
+	}
+	catch (exception& bug) {
+		cout << bug.what() << endl << endl;
+	}
+}
+
+template<class T>
+void Keeper<T>::write(string s) {
+	ofstream fout(s, ios::out);
+	try {
+		if (size == 0) {
+			exception error("Пусто");
+			throw error;
+		}
+		fout << size << endl;
+		for (int i = 0; i < size; ++i) {
+			fout << ptr[i] << endl;
+		}
+		fout.close();
+		cout << "Запись прошла успешно" << endl << endl;
+	}
+	catch (exception& error) {
+		cout << error.what() << endl;
+	}
+}
+
+template<class T>
+void Keeper<T>::read(string s) {
+	delete[] ptr;
+	ifstream fin(s, ios::in);
+	fin >> size;
+	ptr = new T[size];
+	for (int i = 0; i < size; ++i) {
+		fin >> ptr[i];
+	}
+	fin.close();
+	cout << "Прочитано успешно" << endl << endl;
+}
