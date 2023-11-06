@@ -1,8 +1,11 @@
+// #pragma once
+#include <stdexcept>
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <exception>
 using namespace std;
+
 
 template <class T>
 class Keeper {
@@ -49,11 +52,13 @@ template < class T>
 void Keeper<T>::pop(int num) {
 	try {
 		if (size == 0) {
-			exception error("Пусто");
+			// exception error("Пусто");
+            exception(error);
 			throw error;
 		}
 		if (num < 0 || num >= size) {
-			exception bug("Неверный номер");
+			// exception bug("Неверный номер");
+            exception(bug);
 			throw bug;
 		}
 		T* temp = new T[size - 1];
@@ -90,11 +95,13 @@ template<class T>
 void Keeper<T>::edit(int change) {
 	try {
 		if (size == 0) {
-			exception error("Пусто");
+			// exception error("Пусто");
+            exception(error);
 			throw error;
 		}
 		if (change < 0 || change >= size) {
-			exception bug("Неверный номер");
+			// exception bug("Неверный номер");
+            exception(bug);
 			throw bug;
 		}
 		cin >> ptr[change];
@@ -109,7 +116,8 @@ void Keeper<T>::write(string s) {
 	ofstream fout(s, ios::out);
 	try {
 		if (size == 0) {
-			exception error("Пусто");
+			// exception error("Пусто");
+            exception(error);
 			throw error;
 		}
 		fout << size << endl;

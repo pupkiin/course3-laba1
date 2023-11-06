@@ -1,5 +1,7 @@
+// #ifdef HEADER
+// #define HEADER
 #include <fstream>
-#include "Keeper.h"
+// #include "Keeper.h"
 using namespace std;
 
 class Books {
@@ -8,3 +10,5 @@ public:
 	virtual ~Books();
 	virtual void p() = 0;
 };
+
+// #endif

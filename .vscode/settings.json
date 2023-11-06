@@ -4,6 +4,8 @@
         "iostream": "cpp",
         "fstream": "cpp",
         "istream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "exception": "cpp",
+        "__locale": "cpp"
     }
 }
